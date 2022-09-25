@@ -69,7 +69,7 @@ const getDestinationId = (location) => {
   return destinationId.id
 }
 
-const sendTripRequest = () => {
+const sendTripApplication = () => {
   const tripInfo = {
     id: Date.now(),
     userID: traveler.id,
@@ -80,10 +80,10 @@ const sendTripRequest = () => {
     status: 'pending',
     suggestedActivities: []
   };
-  console.log(tripInfo)
+  // console.log(tripInfo)
   postTripApplication(tripInfo)
 }
 
 //// Event Listeners ////
-bookButton.addEventListener("click", sendTripRequest)
+bookButton.addEventListener("click", sendTripApplication)
 window.addEventListener("load", pageLoad);
