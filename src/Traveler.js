@@ -53,10 +53,20 @@ class Traveler {
     return totalTrips
   }
 
-  getAnnualSpending() {
-    let totalTrips = trips.filter(trip => trip.userID === this.id);
-    let tripsThisYear = totalTrips.filter(trip => trip.date)
-  }
+
 }
+
+  // getAnnualSpending(trips) {
+  //   let currentYear = new Date().getFullYear()
+  //   let totalTrips = trips.filter(trip => trip.userID === this.id);
+  //   let tripsThisYear = totalTrips.filter(trip => new Date(`${trip.date}`).getFullYear() === currentYear)
+  //   // console.log('TTY', tripsThisYear)
+  //   let annualSpending = tripsThisYear.reduce((acc, trip) => {
+  //     // trip.calculateTripCost()
+  //     acc += trip.tripTotal
+  //     return acc
+  //   },0)
+  //   return `You Have Spent $${annualSpending} On Travel So Far This Year!`;
+  // }
 
 export default Traveler
