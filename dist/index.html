@@ -12,17 +12,41 @@
     <h3 class="app-quote">Connecting you to the world since 1990</h3>
   </section>
   <section class="welcome-section">
-    <h2 class="welcome-user">Welcome back <span id="userName"></span>!</h2>
+    <h2 class="welcome-user"><span id="userName"></span>!</h2>
+  </section>
+  <section class="booking-section">
+    <h3 class="booking-title">Plan Your Next Trip Here!</h3>
+    <div class="booking">
+      <label for="start">Start Date:
+        <input required type="date" id="tripStartDate" name="trip-start-date" min="1990-01-01" max="20270-12-31" required>
+      </label>
+      <label for="trip-duration">Duration (days):
+        <input required class="trip-duration" id="tripDuration" type="number" min="1" required>
+      </label>
+      <label for="num-travelers">Number of Travelers:
+        <input required class="number-of-travelers" type="number" id="numberOfTravelers" min="1" required>
+      </label>
+      <label for="drop">Choose a Destination:
+        <select class="drop" id="dropDownLocations" required>
+          <option value="0">Destinations</option>
+        </select>
+      </label>
+    </div>
+    <button class="book-btn" id="bookBtn">Start Your Travel!</button>
   </section>
   <section class="trip-info-section">
     <h3 class="user-trip-info">Your Trips</h3>
     <h4 class="past-trips">Past</h4>
+      <div id="pastTrips"></div>
     <h4 class="upcoming-trips">Upcoming</h4>
+      <div id="upcomingTrips"></div>
     <h4 class="pending-trips">Pending</h4>
+     <div id="pendingTrips"></div>
   </section>
   <section class="account-info">
     <h3 class="user-account-info">Your Account</h3>
     <h4 class="total-spent">Total</h4>
+     <div id="totalSpent"></div>
   </section>
   <img src="./images/turing-logo.png" alt="turing logo">
   

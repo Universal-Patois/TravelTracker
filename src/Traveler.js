@@ -1,5 +1,6 @@
 import Travelers from "./Travelers"
 import Trips from "./Trips"
+import Trip from "./Trip"
 
 class Traveler {
   constructor (traveler, date) {
@@ -9,8 +10,12 @@ class Traveler {
     this.pastTrips = []
     this.upcomingTrips = []
     this.pendingTrips = []
-    this.totalSpentTraveling = 0
     this.todaysDate = date
+  }
+
+  greetUser() {
+    let firstName = this.name.split(' ')
+    return `Welcome back ${firstName[0]}! The World Awaits You!`
   }
 
   getTrips(trips) {
@@ -53,10 +58,18 @@ class Traveler {
     return totalTrips
   }
 
-  getAnnualSpending() {
-    let totalTrips = trips.filter(trip => trip.userID === this.id);
-    let tripsThisYear = totalTrips.filter(trip => trip.date)
-  }
+  // getAnnualSpending(trips) {
+  //   let currentYear = new Date().getFullYear()
+  //   let totalTrips = trips.filter(trip => trip.userID === this.id);
+  //   let tripsThisYear = totalTrips.filter(trip => new Date(`${trip.date}`).getFullYear() === currentYear)
+  //   // console.log('TTY', tripsThisYear)
+  //   let annualSpending = tripsThisYear.reduce((acc, trip) => {
+  //     // trip.calculateTripCost()
+  //     acc += trip.tripTotal
+  //     return acc
+  //   },0)
+  //   return `You Have Spent $${annualSpending} On Travel So Far This Year!`;
+  // }
 }
 
 export default Traveler

@@ -1,7 +1,27 @@
+const userGreeting = document.getElementById('userName')
 const travelerPastTrips = document.getElementById('pastTrips')
 const travelerUpcomingTrips = document.getElementById('upcomingTrips')
 const travelerPendingTrips = document.getElementById('pendingTrips')
 // const travelerSpending = document.getElementById('totalSpent')
+
+const displayAllTrips = (traveler) => {
+  displayPastTrips(traveler)
+  displayUpcomingTrips(traveler)
+  displayPendingTrips(traveler)
+}
+
+const displayUserGreeting = (greetingMessage) => {
+  userGreeting.innerText = greetingMessage
+}
+
+const populateDropDownLocations = (locations) => {
+    locations.forEach(location => {
+      const locationName = document.createElement('option');
+      locationName.innerText = location.destination;
+      locationName.value = location.destination;
+      dropDownLocations.appendChild(locationName);
+  });
+};
 
 const displayPastTrips = (traveler) => {
   // travelerPastTrips.innerHTML = ''
@@ -14,7 +34,9 @@ const displayPastTrips = (traveler) => {
       Status: ${trip.status} <br> </p>
       ` 
     })
-  }
+  }  travelerPastTrips.innerHTML += `
+  <h3> You have no past trips. <br>
+  `
 }
 
 const displayUpcomingTrips = (traveler) => {
@@ -51,8 +73,9 @@ const displayPendingTrips = (traveler) => {
   }
 }
 
-// const displayAnnualSpending = (traveler) => {
-
+// const displayAnnualSpending = (traveler, trips) => {
+//   totalSpent.innerHTML = traveler.getAnnualSpending(trips)
 // }
+// displayAnnualSpending,
 
-export { displayPastTrips, displayUpcomingTrips, displayPendingTrips }
+export { displayAllTrips,  displayUserGreeting, populateDropDownLocations}

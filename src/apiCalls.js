@@ -10,4 +10,8 @@ const fetchAllData = (dataPath) => {
   //     .catch(error => console.log(`Error: ${userNumber} fetch error`, error))
   // }
 
+const postTripApplication = (tripInfo) => {
+  
+}
+
 export { fetchAllData }

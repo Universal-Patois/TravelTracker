@@ -47,4 +47,6 @@ describe('Traveler', () => {
     // it('should be able to store trips- past, present, and pending', () => {
     //   expect(traveler1.ps)
     // })
+
+    it('should')
   })
