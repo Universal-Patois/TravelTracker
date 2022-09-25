@@ -80,7 +80,6 @@ const sendTripApplication = () => {
     status: 'pending',
     suggestedActivities: []
   };
-  // console.log(tripInfo)
   postTripApplication(tripInfo)
 }
 

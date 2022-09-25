@@ -15,8 +15,7 @@ class Trip {
   }
 
   calculateTripCost() {
-    Destinations.allDestinations.forEach(location => {
-      if(location.id === this.destinationID) {
+      if(this.destinationID === destination.id) {
         const lodgingCost = this.duration * location.estimatedLodgingCostPerDay
         const flightCost = this.travelers * location.estimatedFlightCostPerPerson
         const tripTotal = lodgingCost + flightCost
@@ -24,7 +23,6 @@ class Trip {
         this.tripTotal = totalPlusFee
         return totalPlusFee
       }
-    })
   }
 }
 
