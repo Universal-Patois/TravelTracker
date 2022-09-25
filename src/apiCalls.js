@@ -11,7 +11,16 @@ const fetchAllData = (dataPath) => {
   // }
 
 const postTripApplication = (tripInfo) => {
-  
+  return fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    body: JSON.stringify(tripInfo),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .catch(err => console.log(err.message));
+ 
 }
 
-export { fetchAllData }
+export { fetchAllData, postTripApplication }

@@ -1,9 +1,11 @@
+//// Query Selectors ////
 const userGreeting = document.getElementById('userName')
 const travelerPastTrips = document.getElementById('pastTrips')
 const travelerUpcomingTrips = document.getElementById('upcomingTrips')
 const travelerPendingTrips = document.getElementById('pendingTrips')
 // const travelerSpending = document.getElementById('totalSpent')
 
+//// Functions ////
 const displayAllTrips = (traveler) => {
   displayPastTrips(traveler)
   displayUpcomingTrips(traveler)
@@ -77,5 +79,7 @@ const displayPendingTrips = (traveler) => {
 //   totalSpent.innerHTML = traveler.getAnnualSpending(trips)
 // }
 // displayAnnualSpending,
+
+
 
 export { displayAllTrips,  displayUserGreeting, populateDropDownLocations}
