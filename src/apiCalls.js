@@ -9,11 +9,14 @@ const fetchAllData = (dataPath) => {
       })
     }
   
-  // const fetchSingleTravelerData = (userNumber) => {
-  //   return fetch(`http://localhost:3001/api/v1/travelers/${userNumber}`)
-  //     .then(response => response.json())
-  //     .catch(error => console.log(`Error: ${userNumber} fetch error`, error))
-  // }
+const fetchSingleTravelerData = (userNumber) => {
+  return fetch(`http://localhost:3001/api/v1/travelers/${userNumber}`)
+    .then(response => response.json())
+    .catch(error =>{
+      displayErrorMessage(error)
+      console.log(`Error: ${error.message}`)
+    })
+  }
 
 const postTripApplication = (tripInfo) => {
   return fetch('http://localhost:3001/api/v1/trips', {
@@ -42,4 +45,4 @@ const displayErrorMessage = (error) => {
     userMessage.innerText = error.message;
 }
 
-export { fetchAllData, postTripApplication }
+export { fetchAllData, postTripApplication, fetchSingleTravelerData }

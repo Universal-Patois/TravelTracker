@@ -3,9 +3,9 @@
 //// Imports ////
 // import "src/images/blue-map-with-borders-.png"
 import "./css/styles.css";
-import { fetchAllData, postTripApplication } from "./apiCalls";
+import { fetchAllData, postTripApplication, fetchSingleTravelerData } from "./apiCalls";
 import {
-  displayPendingTrips, displayAllTrips, displayUserGreeting, populateDropDownLocations, displayAnnualSpending,
+  displayPendingTrips, displayAllTrips, displayUserGreeting, populateDropDownLocations, displayAnnualSpending, toggleMainPage, displayLoginError
 } from "./domManipulation";
 
 import Traveler from "./Traveler";
@@ -15,10 +15,15 @@ import Trips from "./Trips";
 import Destinations from "./Destinations";
 
 //// Query Selectors ////
+const usernameInput = document.getElementById("username")
+const passwordInput = document.getElementById("password")
+const loginButton = document.getElementById("loginButton")
 const tripStartDate = document.getElementById("tripStartDate")
 const tripDuration = document.getElementById("tripDuration")
 const numberOfTravelers = document.getElementById("numberOfTravelers")
 const bookButton = document.getElementById("bookButton")
+const estimateButton = document.getElementById("estimateButton")
+const logoutButton = document.getElementById("logoutButton")
 
 //// Global Variables ////
 let travelersRepo;
@@ -26,27 +31,39 @@ let tripsRepo;
 let destinationsRepo;
 let tripInfo
 let traveler;
+let travelerId
 let todaysDate = new Date().getTime();
 
 //// Functions ////
-const pageLoad = () => {
-  initializeData();
-};
+const loginUser = () => {
+  if (usernameInput.value.slice(0, 8) === 'traveler' && passwordInput.value === 'travel') {
+    travelerId = usernameInput.value.slice(8)
+    initializeUser()
+  } else {
+    displayLoginError()
+  }
+}
+
+const initializeUser = () => {
+  fetchSingleTravelerData(travelerId).then((data) => {
+    traveler = new Traveler(data, todaysDate)
+    initializeData()
+    toggleMainPage()
+  })
+}
 
 const initializeData = () => {
   Promise.all([
     fetchAllData("travelers"),
     fetchAllData("trips"),
     fetchAllData("destinations"),
-    // fetchSingleTravelerData(15)
   ]).then((data) => {
     const trips = data[1].trips.map(trip => new Trip(trip))
     travelersRepo = new Travelers(data[0].travelers);
     tripsRepo = new Trips(trips);
     destinationsRepo = new Destinations(data[2].destinations);
-    traveler = new Traveler(data[0].travelers[25], todaysDate);
     displayUserGreeting(traveler.greetUser())
-    getTravelerTrips();
+    getTravelerTrips()
     displayAllTrips(traveler)
     populateDropDownLocations(destinationsRepo.allDestinations)
     displayAnnualSpending(traveler, tripsRepo.trips, destinationsRepo.allDestinations)
@@ -77,11 +94,17 @@ const sendTripApplication = () => {
 }
 
 // const calculateInputTripCost = (tripInfo) => {
-  
-//   const lodgingCost = tripInfo.duration * tripInfo.destinationID.
+
+//   const lodgingCost = tripInfo.duration * tripInfo.destinationID
 //   const flightCost = tripInfo.travelers *
 // }
 
+const logoutUser = () => {
+  location.reload()
+}
+
 //// Event Listeners ////
+loginButton.addEventListener("click", loginUser)
 bookButton.addEventListener("click", sendTripApplication)
-window.addEventListener("load", pageLoad);
+// estimateButton.addEventListener("click", calculateInputTripCost)
+logoutButton.addEventListener("click", logoutUser)
