@@ -60,6 +60,7 @@ class Traveler {
     return totalTrips
   }
 
+
   getAnnualSpending(trips, destinations) {
     let currentYear = new Date().getFullYear()
     let totalTrips = trips.filter(trip => trip.userID === this.id);
@@ -71,6 +72,6 @@ class Traveler {
     },0)
     return `You Have Spent $${annualSpending} On Travel So Far This Year!`;
   }
-}
+
 
 export default Traveler
