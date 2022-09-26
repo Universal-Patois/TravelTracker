@@ -3,7 +3,7 @@ const userGreeting = document.getElementById('userName')
 const travelerPastTrips = document.getElementById('pastTrips')
 const travelerUpcomingTrips = document.getElementById('upcomingTrips')
 const travelerPendingTrips = document.getElementById('pendingTrips')
-// const travelerSpending = document.getElementById('totalSpent')
+const travelerSpending = document.getElementById('totalSpent')
 
 //// Functions ////
 const displayAllTrips = (traveler) => {
@@ -35,15 +35,19 @@ const displayPastTrips = (traveler) => {
       Duration: ${trip.duration} <br>
       Status: ${trip.status} <br> </p>
       ` 
-    })
-  }  travelerPastTrips.innerHTML += `
-  <h3> You have no past trips. <br>
-  `
+    }) 
+  }  else {
+    travelerPastTrips.innerHTML += `
+    <h3> You have no past trips. <br>
+    `
+  }
 }
 
 const displayUpcomingTrips = (traveler) => {
   if (traveler.upcomingTrips.length > 0) {
     traveler.upcomingTrips.forEach(trip => {
+      console.log(trip.destination)
+      // <h4>${trip.destination.destination}</h4><hr>
       travelerUpcomingTrips.innerHTML += `
       <p>Trip date: ${trip.date} <br>
       Travelers: ${trip.travelers} <br>
@@ -61,6 +65,7 @@ const displayUpcomingTrips = (traveler) => {
 const displayPendingTrips = (traveler) => {
   if (traveler.pendingTrips.length > 0) {
     traveler.pendingTrips.forEach(trip => {
+      // <h4>${trip.destination.destination}</h4><hr>
       travelerPendingTrips.innerHTML += `
       <p>Trip date: ${trip.date} <br>
       Travelers: ${trip.travelers} <br>
@@ -75,11 +80,11 @@ const displayPendingTrips = (traveler) => {
   }
 }
 
-// const displayAnnualSpending = (traveler, trips) => {
-//   totalSpent.innerHTML = traveler.getAnnualSpending(trips)
-// }
-// displayAnnualSpending,
+const displayAnnualSpending = (traveler, trips, destinations) => {
+  travelerSpending.innerHTML = traveler.getAnnualSpending(trips, destinations)
+}
 
 
 
-export { displayAllTrips,  displayUserGreeting, populateDropDownLocations}
+
+export { displayPendingTrips, displayAllTrips,  displayUserGreeting, populateDropDownLocations, displayAnnualSpending}

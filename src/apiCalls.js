@@ -1,4 +1,4 @@
-const errorMessage = document.getElementById('errorMessage')
+const userMessage = document.getElementById('errorMessage')
 
 const fetchAllData = (dataPath) => {
     return fetch(`http://localhost:3001/api/v1/${dataPath}`)
@@ -39,7 +39,7 @@ const checkForErrors = (response) => {
 }
 
 const displayErrorMessage = (error) => {
-    errorMessage.innerText = error.message;
+    userMessage.innerText = error.message;
 }
 
 export { fetchAllData, postTripApplication }

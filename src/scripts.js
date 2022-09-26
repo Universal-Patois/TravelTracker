@@ -5,9 +5,9 @@
 import "./css/styles.css";
 import { fetchAllData, postTripApplication } from "./apiCalls";
 import {
-  displayAllTrips, displayUserGreeting, populateDropDownLocations
+  displayPendingTrips, displayAllTrips, displayUserGreeting, populateDropDownLocations, displayAnnualSpending,
 } from "./domManipulation";
-// displayAnnualSpending,
+
 import Traveler from "./Traveler";
 import Travelers from "./Travelers";
 import Trip from "./Trip";
@@ -24,7 +24,7 @@ const bookButton = document.getElementById("bookButton")
 let travelersRepo;
 let tripsRepo;
 let destinationsRepo;
-let trip;
+let tripInfo
 let traveler;
 let todaysDate = new Date().getTime();
 
@@ -40,28 +40,22 @@ const initializeData = () => {
     fetchAllData("destinations"),
     // fetchSingleTravelerData(15)
   ]).then((data) => {
+    const trips = data[1].trips.map(trip => new Trip(trip))
     travelersRepo = new Travelers(data[0].travelers);
-    tripsRepo = new Trips(data[1].trips);
+    tripsRepo = new Trips(trips);
     destinationsRepo = new Destinations(data[2].destinations);
     traveler = new Traveler(data[0].travelers[25], todaysDate);
     displayUserGreeting(traveler.greetUser())
-    getTravelerTrips(traveler, tripsRepo);
+    getTravelerTrips();
     displayAllTrips(traveler)
     populateDropDownLocations(destinationsRepo.allDestinations)
-    // displayAnnualSpending(traveler)
-
-    // console.log("local", destinationsRepo.allDestinations)
-    // console.log("Traveler", traveler);
-    // console.log("Traveler Past", traveler.pastTrips);
-    // console.log("Traveler Upcoming", traveler.upcomingTrips);
-    // console.log("Traveler Pending", traveler.pendingTrips);
-    
+    displayAnnualSpending(traveler, tripsRepo.trips, destinationsRepo.allDestinations)
   });
 };
 
-const getTravelerTrips = (traveler, tripsRepo) => {
+const getTravelerTrips = () => {
   traveler.getTrips(tripsRepo.trips);
-  // traveler.getAnnualSpending(tripsRepo.trips)
+  // traveler.getAnnualSpending(tripsRepo.trips, destinationsRepo.allDestinations)
 };
 
 const getDestinationId = (location) => {
@@ -70,7 +64,7 @@ const getDestinationId = (location) => {
 }
 
 const sendTripApplication = () => {
-  const tripInfo = {
+   tripInfo = {
     id: Date.now(),
     userID: traveler.id,
     destinationID: getDestinationId(dropDownLocations.value),
@@ -82,6 +76,12 @@ const sendTripApplication = () => {
   };
   postTripApplication(tripInfo)
 }
+
+// const calculateInputTripCost = (tripInfo) => {
+  
+//   const lodgingCost = tripInfo.duration * tripInfo.destinationID.
+//   const flightCost = tripInfo.travelers *
+// }
 
 //// Event Listeners ////
 bookButton.addEventListener("click", sendTripApplication)

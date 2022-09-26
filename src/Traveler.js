@@ -28,7 +28,6 @@ class Traveler {
     let totalTrips = trips.filter(trip => trip.userID === this.id);
     totalTrips.forEach(trip => {
       let tripDate = new Date(`${trip.date}`).getTime()
-      // console.log('tripDate', tripDate)
       if(tripDate < this.todaysDate ) {
         this.pastTrips.push(trip)
       }
@@ -40,7 +39,6 @@ class Traveler {
     let totalTrips = trips.filter(trip => trip.userID === this.id);
     totalTrips.forEach(trip => {
       let tripDate = new Date(`${trip.date}`).getTime()
-      // console.log('tripDate', tripDate)
       if(tripDate > this.todaysDate ) {
         this.upcomingTrips.push(trip)
       }
@@ -58,18 +56,17 @@ class Traveler {
     return totalTrips
   }
 
-  // getAnnualSpending(trips) {
-  //   let currentYear = new Date().getFullYear()
-  //   let totalTrips = trips.filter(trip => trip.userID === this.id);
-  //   let tripsThisYear = totalTrips.filter(trip => new Date(`${trip.date}`).getFullYear() === currentYear)
-  //   // console.log('TTY', tripsThisYear)
-  //   let annualSpending = tripsThisYear.reduce((acc, trip) => {
-  //     // trip.calculateTripCost()
-  //     acc += trip.tripTotal
-  //     return acc
-  //   },0)
-  //   return `You Have Spent $${annualSpending} On Travel So Far This Year!`;
-  // }
+  getAnnualSpending(trips, destinations) {
+    let currentYear = new Date().getFullYear()
+    let totalTrips = trips.filter(trip => trip.userID === this.id);
+    let tripsThisYear = totalTrips.filter(trip => new Date(`${trip.date}`).getFullYear() === currentYear)
+    let annualSpending = tripsThisYear.reduce((acc, trip) => {
+      trip.calculateTripCost(destinations)
+      acc += trip.tripTotal
+      return acc
+    },0)
+    return `You Have Spent $${annualSpending} On Travel So Far This Year!`;
+  }
 }
 
 export default Traveler
