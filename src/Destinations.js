@@ -1,6 +1,6 @@
 class Destinations {
   constructor(allDestinations) {
-    this.destinations = allDestinations
+    this.allDestinations = allDestinations
   }
 }
 
