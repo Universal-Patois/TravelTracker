@@ -1,5 +1,3 @@
-import Destinations from "./Destinations"
-
 class Trip {
   constructor (trip) {
     this.id = trip.id

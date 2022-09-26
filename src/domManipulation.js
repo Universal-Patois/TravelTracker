@@ -29,7 +29,7 @@ const populateDropDownLocations = (locations) => {
 };
 
 const displayPastTrips = (traveler) => {
-  // travelerPastTrips.innerHTML = ''
+  travelerPastTrips.innerHTML = ''
   if (traveler.pastTrips.length > 0) {
     traveler.pastTrips.forEach(trip => {
       travelerPastTrips.innerHTML += `
@@ -51,6 +51,7 @@ const displayPastTrips = (traveler) => {
 }
 
 const displayUpcomingTrips = (traveler) => {
+  travelerUpcomingTrips.innerHTML += ''
   if (traveler.upcomingTrips.length > 0) {
     traveler.upcomingTrips.forEach(trip => {
       travelerUpcomingTrips.innerHTML += `
@@ -73,6 +74,7 @@ const displayUpcomingTrips = (traveler) => {
 }
 
 const displayPendingTrips = (traveler) => {
+  travelerPendingTrips.innerHTML += ''
   if (traveler.pendingTrips.length > 0) {
     traveler.pendingTrips.forEach(trip => {
       travelerPendingTrips.innerHTML += `

@@ -79,6 +79,16 @@ const getDestinationId = (location) => {
   return destinationId.id
 }
 
+// const getDestinationLodgingCost = (location) => {
+//   const destination = destinationsRepo.allDestinations.find(place => place.destination === location)
+//   return destination.estimatedLodgingCostPerDay
+// }
+
+// const getDestinationFlightCost = (location) => {
+//   const destination = destinationsRepo.allDestinations.find(place => place.destination === location)
+//   return destination.estimatedFlightCostPerPerson
+// }
+
 const sendTripApplication = () => {
    tripInfo = {
     id: Date.now(),
@@ -91,12 +101,16 @@ const sendTripApplication = () => {
     suggestedActivities: []
   };
   postTripApplication(tripInfo)
+  // displayPendingTrips(traveler)
 }
 
-// const calculateInputTripCost = (tripInfo) => {
-
-//   const lodgingCost = tripInfo.duration * tripInfo.destinationID
-//   const flightCost = tripInfo.travelers *
+// const calculateInputTripCost = () => {
+//   const lodgingCost = parseInt(tripDuration.value) * getDestinationFlightCost(dropDownLocations.value)
+//   const flightCost = parseInt(numberOfTravelers.value) * getDestinationLodgingCost(dropDownLocations.value)
+//   const tripTotal = lodgingCost + flightCost
+//   const totalPlusFee = tripTotal + (tripTotal * .10)
+//   console.log(calculateInputTripCost())
+//   return totalPlusFee
 // }
 
 const logoutUser = () => {
