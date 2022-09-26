@@ -4,51 +4,72 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Travel Tracker</title>
 </head>
 <body>
-  <section class="title-seciton">
-    <h1 class="app-title">Travel Tracker</h1>
-    <h3 class="app-quote">Connecting you to the world since 1990</h3>
-  </section>
-  <section class="welcome-section">
-    <h2 class="welcome-user"><span id="userName"></span></h2>
-  </section>
-  <section class="booking-section">
-    <h3 class="booking-title">Plan Your Next Trip Here!</h3>
-    <div class="booking">
-      <label for="start">Start Date:
-        <input required type="date" id="tripStartDate" name="trip-start-date" min="1990-01-01" max="20270-12-31" required>
-      </label>
-      <label for="trip-duration">Duration (days):
-        <input required class="trip-duration" id="tripDuration" type="number" min="1" required>
-      </label>
-      <label for="num-travelers">Number of Travelers:
-        <input required class="number-of-travelers" type="number" id="numberOfTravelers" min="1" required>
-      </label>
-      <label for="drop">Choose a Destination:
-        <select class="drop" id="dropDownLocations" required>
-          <option value="0">Destinations</option>
-        </select>
-      </label>
-    </div>
-    <h4 class="display-message" id="userMessage"></h4>
-    <button class="book-button" id="bookButton">Start Your Travel!</button>
-  </section>
-  <section class="trip-info-section">
-    <h3 class="user-trip-info">Your Trips</h3>
-    <h4 class="past-trips">Past</h4>
-      <div id="pastTrips"></div>
-    <h4 class="upcoming-trips">Upcoming</h4>
-      <div id="upcomingTrips"></div>
-    <h4 class="pending-trips">Pending</h4>
-     <div id="pendingTrips"></div>
-  </section>
-  <section class="account-info">
-    <h3 class="user-account-info">Your Account</h3>
-    <h4 class="total-spent">Total</h4>
-     <div id="totalSpent"></div>
-  </section>
+  <div class="login-page" id="loginPage">
+    <section class="login-section" id="loginSection">
+      <h1 class="app-title">Travel Tracker</h1>
+      <h2 class="login-quote">Connecting You To The World Since 1990</h2>
+      <h3 class="login-message" id="loginMessge">Please, Enter Your Login Information</h3>
+      <div id="loginErrorMessage"></div>
+      <div class="login-inputs">
+        <label for="username" class="login-labels">Username:
+          <input type="text" placeholder="username" id="username" name="user-name">
+        </label>
+        <label for="password" class="login-labels"> Password:
+          <input type="password" placeholder="password" id="password" name="password">
+        </label>
+        <button class="submit small-btn" id="loginButton">Login</button>
+      </div>
+    </section>
+  </div>
+  <div class="main-page hidden" id="mainPage">
+    <section class="title-seciton">
+      <h1 class="app-title">Travel Tracker</h1>
+      <h3 class="app-quote">Connecting You To The World Since 1990</h3>
+    </section>
+    <section class="welcome-section">
+      <h2 class="welcome-user"><span id="userName"></span></h2>
+    </section>
+    <section class="booking-section">
+      <h3 class="booking-title">Plan Your Next Trip Here!</h3>
+      <div class="booking">
+        <label for="start">Start Date:
+          <input required type="date" id="tripStartDate" name="trip-start-date" min="1990-01-01" max="20270-12-31" required>
+        </label>
+        <label for="trip-duration">Duration (days):
+          <input required class="trip-duration" id="tripDuration" type="number" min="1" required>
+        </label>
+        <label for="num-travelers">Number of Travelers:
+          <input required class="number-of-travelers" type="number" id="numberOfTravelers" min="1" required>
+        </label>
+        <label for="drop">Choose a Destination:
+          <select class="drop" id="dropDownLocations" required>
+            <option value="0">Destinations</option>
+          </select>
+        </label>
+      </div>
+      <h4 class="display-message" id="userMessage"></h4>
+      <button class="book-button" id="bookButton">Start Your Travel!</button>
+      <button class="estimate-button" id="estimateButton">Get an Estimate!</button>
+      <button class="logout-button" id="logoutButton">Logout</button>
+    </section>
+    <section class="trip-info-section">
+      <h3 class="user-trip-info">Your Trips</h3>
+      <h4 class="past-trips">Past</h4>
+        <div id="pastTrips"></div>
+      <h4 class="upcoming-trips">Upcoming</h4>
+        <div id="upcomingTrips"></div>
+      <h4 class="pending-trips">Pending</h4>
+      <div id="pendingTrips"></div>
+    </section>
+    <section class="account-info">
+      <h3 class="user-account-info">Your Account</h3>
+      <h4 class="total-spent">Total</h4>
+      <div id="totalSpent"></div>
+    </section>
+  </div>
   <!-- <img src="src/images/blue-map-with-borders-.png"> -->
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->

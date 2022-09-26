@@ -30,7 +30,6 @@ class Traveler {
       let tripDate = new Date(`${trip.date}`).getTime()
       if(tripDate < this.todaysDate ) {
         trip.getDestinationInfo(destinations)
-        // console.log(trip.destination['estimatedLodgingCostPerDay'])
         this.pastTrips.push(trip)
       }
     })
@@ -72,6 +71,6 @@ class Traveler {
     },0)
     return `You Have Spent $${annualSpending} On Travel So Far This Year!`;
   }
-
+}
 
 export default Traveler

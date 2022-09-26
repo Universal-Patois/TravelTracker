@@ -1,4 +1,7 @@
 //// Query Selectors ////
+const loginPage = document.getElementById("loginPage")
+const mainPage = document.getElementById("mainPage")
+const logInErrorMessage = document.getElementById("logInErrorMessage")
 const userGreeting = document.getElementById('userName')
 const travelerPastTrips = document.getElementById('pastTrips')
 const travelerUpcomingTrips = document.getElementById('upcomingTrips')
@@ -29,13 +32,12 @@ const displayPastTrips = (traveler) => {
   // travelerPastTrips.innerHTML = ''
   if (traveler.pastTrips.length > 0) {
     traveler.pastTrips.forEach(trip => {
-      console.log(trip.destination)
       travelerPastTrips.innerHTML += `
       <div class="image-wrap">
       <img class="destination-image" src=${trip.destination.image} alt=${trip.destination.alt}><hr>
       </div>
       <h4>${trip.destination.destination}</h4><hr>
-      <p>Trip date: ${trip.date} <br>
+      <p>Trip Date: ${trip.date} <br>
       Travelers: ${trip.travelers} <br>
       Duration: ${trip.duration} <br>
       Status: ${trip.status} <br> </p>
@@ -51,13 +53,13 @@ const displayPastTrips = (traveler) => {
 const displayUpcomingTrips = (traveler) => {
   if (traveler.upcomingTrips.length > 0) {
     traveler.upcomingTrips.forEach(trip => {
-      // <h4>${trip.destination.destination}</h4><hr>
       travelerUpcomingTrips.innerHTML += `
+      <h4>${trip.destination.destination}</h4><hr>
       <div class="image-wrap">
       <img class="destination-image" src=${trip.destination.image} alt=${trip.destination.alt}><hr>
       </div>
       <h4>${trip.destination.destination}</h4><hr>
-      <p>Trip date: ${trip.date} <br>
+      <p>Trip Date: ${trip.date} <br>
       Travelers: ${trip.travelers} <br>
       Duration: ${trip.duration} <br>
       Status: ${trip.status} <br> </p>
@@ -78,7 +80,7 @@ const displayPendingTrips = (traveler) => {
       <img class="destination-image" src=${trip.destination.image} alt=${trip.destination.alt}><hr>
       </div>
       <h4>${trip.destination.destination}</h4><hr>
-      <p>Trip date: ${trip.date} <br>
+      <p>Trip Date: ${trip.date} <br>
       Travelers: ${trip.travelers} <br>
       Duration: ${trip.duration} <br>
       Status: ${trip.status} <br> </p>
@@ -95,7 +97,14 @@ const displayAnnualSpending = (traveler, trips, destinations) => {
   travelerSpending.innerHTML = traveler.getAnnualSpending(trips, destinations)
 }
 
+const toggleMainPage = () => {
+  loginPage.classList.toggle('hidden')
+  mainPage.classList.toggle('hidden')
+}
+
+const displayLoginError = () => {
+  loginErrorMessage.innerText += `Invalid Login and/or Password! Please, Try Again!`
+}
 
 
-
-export { displayPendingTrips, displayAllTrips,  displayUserGreeting, populateDropDownLocations, displayAnnualSpending}
+export { displayPendingTrips, displayAllTrips,  displayUserGreeting, populateDropDownLocations, displayAnnualSpending, toggleMainPage, displayLoginError}
