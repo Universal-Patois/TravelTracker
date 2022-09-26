@@ -29,7 +29,12 @@ const displayPastTrips = (traveler) => {
   // travelerPastTrips.innerHTML = ''
   if (traveler.pastTrips.length > 0) {
     traveler.pastTrips.forEach(trip => {
+      console.log(trip.destination)
       travelerPastTrips.innerHTML += `
+      <div class="image-wrap">
+      <img class="destination-image" src=${trip.destination.image} alt=${trip.destination.alt}><hr>
+      </div>
+      <h4>${trip.destination.destination}</h4><hr>
       <p>Trip date: ${trip.date} <br>
       Travelers: ${trip.travelers} <br>
       Duration: ${trip.duration} <br>
@@ -46,9 +51,12 @@ const displayPastTrips = (traveler) => {
 const displayUpcomingTrips = (traveler) => {
   if (traveler.upcomingTrips.length > 0) {
     traveler.upcomingTrips.forEach(trip => {
-      console.log(trip.destination)
       // <h4>${trip.destination.destination}</h4><hr>
       travelerUpcomingTrips.innerHTML += `
+      <div class="image-wrap">
+      <img class="destination-image" src=${trip.destination.image} alt=${trip.destination.alt}><hr>
+      </div>
+      <h4>${trip.destination.destination}</h4><hr>
       <p>Trip date: ${trip.date} <br>
       Travelers: ${trip.travelers} <br>
       Duration: ${trip.duration} <br>
@@ -65,8 +73,11 @@ const displayUpcomingTrips = (traveler) => {
 const displayPendingTrips = (traveler) => {
   if (traveler.pendingTrips.length > 0) {
     traveler.pendingTrips.forEach(trip => {
-      // <h4>${trip.destination.destination}</h4><hr>
       travelerPendingTrips.innerHTML += `
+      <div class="image-wrap">
+      <img class="destination-image" src=${trip.destination.image} alt=${trip.destination.alt}><hr>
+      </div>
+      <h4>${trip.destination.destination}</h4><hr>
       <p>Trip date: ${trip.date} <br>
       Travelers: ${trip.travelers} <br>
       Duration: ${trip.duration} <br>

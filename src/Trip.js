@@ -16,13 +16,16 @@ class Trip {
 
   calculateTripCost(destinations) {
     let currentDestination = destinations.find(destination => destination.id === this.destinationID)
-    this.destination = currentDestination
     const lodgingCost = this.duration * currentDestination.estimatedLodgingCostPerDay
     const flightCost = this.travelers * currentDestination.estimatedFlightCostPerPerson
     const tripTotal = lodgingCost + flightCost
     const totalPlusFee = tripTotal + (tripTotal * .10)
     this.tripTotal = totalPlusFee
-    // console.log('43', this.destination)
+  }
+
+  getDestinationInfo(destinations) {
+    let currentDestination = destinations.find(destination => destination.id === this.destinationID)
+    this.destination = currentDestination
   }
 }
 

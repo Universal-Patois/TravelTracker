@@ -1,3 +1,13 @@
 body {
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 }
+
+.destination-image {
+    width: 25vw;
+    height:auto;
+    align-items: center;
+    flex-shrink: 3;
+    margin: 1.5em;
+    background-color: white;
+  
+}

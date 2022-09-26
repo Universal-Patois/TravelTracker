@@ -18,38 +18,42 @@ class Traveler {
     return `Welcome back ${firstName[0]}! The World Awaits You!`
   }
 
-  getTrips(trips) {
-    this.getPastTrips(trips)
-    this.getUpcomingTrips(trips)
-    this.getPendingTrips(trips)
+  getTrips(trips, destinations) {
+    this.getPastTrips(trips, destinations)
+    this.getUpcomingTrips(trips, destinations)
+    this.getPendingTrips(trips, destinations)
   }
 
-  getPastTrips(trips) {
+  getPastTrips(trips, destinations) {
     let totalTrips = trips.filter(trip => trip.userID === this.id);
     totalTrips.forEach(trip => {
       let tripDate = new Date(`${trip.date}`).getTime()
       if(tripDate < this.todaysDate ) {
+        trip.getDestinationInfo(destinations)
+        // console.log(trip.destination['estimatedLodgingCostPerDay'])
         this.pastTrips.push(trip)
       }
     })
     return totalTrips
   }
 
-  getUpcomingTrips(trips) {
+  getUpcomingTrips(trips, destinations) {
     let totalTrips = trips.filter(trip => trip.userID === this.id);
     totalTrips.forEach(trip => {
       let tripDate = new Date(`${trip.date}`).getTime()
       if(tripDate > this.todaysDate ) {
+        trip.getDestinationInfo(destinations)
         this.upcomingTrips.push(trip)
       }
     })
     return totalTrips
   }
 
-  getPendingTrips(trips) {
+  getPendingTrips(trips, destinations) {
     let totalTrips = trips.filter(trip => trip.userID === this.id);
     totalTrips.forEach(trip => {
       if(trip.status === 'pending') {
+        trip.getDestinationInfo(destinations)
         this.pendingTrips.push(trip)
       }
     })

@@ -54,8 +54,7 @@ const initializeData = () => {
 };
 
 const getTravelerTrips = () => {
-  traveler.getTrips(tripsRepo.trips);
-  // traveler.getAnnualSpending(tripsRepo.trips, destinationsRepo.allDestinations)
+  traveler.getTrips(tripsRepo.trips, destinationsRepo.allDestinations);
 };
 
 const getDestinationId = (location) => {
