@@ -1,75 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Tracker</title>
-</head>
-<body>
-  <div class="login-page" id="loginPage">
-    <section class="login-section" id="loginSection" role="form">
-      <h1 class="app-title">Travel Tracker</h1>
-      <h2 class="login-quote">Connecting You To The World Since 1990</h2>
-      <h3 class="login-message" id="loginMessge">Please, Enter Your Login Information</h3>
-      <div id="loginErrorMessage"></div>
-      <div class="login-inputs">
-        <label for="username" class="login-labels">Username:
-          <input type="text" placeholder="username" id="username" name="user-name">
-        </label>
-        <label for="password" class="login-labels"> Password:
-          <input type="password" placeholder="password" id="password" name="password">
-        </label>
-        <button class="submit small-btn" id="loginButton">Login</button>
-      </div>
-    </section>
-  </div>
-  <div class="main-page hidden" id="mainPage">
-    <section class="title-section" role="banner">
-      <h1 class="app-title">Travel Tracker</h1>
-      <h2 class="app-quote">Connecting You To The World Since 1990</h2>
-    </section>
-    <section class="welcome-section" role="banner">
-      <h2 aria-label="welcomes-user-by-name" class="welcome-user"><span id="userName"></span></h2>
-    </section>
-    <section class="booking-section" role="form">
-      <h3 class="booking-title">Plan Your Next Trip Here!</h3>
-      <div class="booking">
-        <label for="start">Start Date:
-          <input aria-label="pick-trip-start-date" required type="date" id="tripStartDate" name="trip-start-date" min="1990-01-01" max="20270-12-31" required>
-        </label>
-        <label for="trip-duration">Duration (days):
-          <input aria-label="pick-trip-duration" required class="trip-duration" id="tripDuration" type="number" min="1" required>
-        </label>
-        <label for="num-travelers">Number of Travelers:
-          <input aria-label="pick-number-of-travelers" required class="number-of-travelers" type="number" id="numberOfTravelers" min="1" required>
-        </label>
-        <label for="drop">Choose a Destination:
-          <select aria-label="drop-down-of-travel-destinations" class="drop" id="dropDownLocations" required>
-            <option value="0">Destinations</option>
-          </select>
-        </label>
-      </div>
-      <h4 aria-label="displays-error-message-to-user" class="display-message" id="userMessage"></h4>
-      <button class="book-button" id="bookButton">Start Your Travel!</button>
-      <button class="estimate-button" id="estimateButton">Get an Estimate!</button>
-      <button class="logout-button" id="logoutButton">Logout</button>
-    </section>
-    <section class="trip-info-section" role="main">
-      <h3 class="user-trip-info">Your Trips</h3>
-      <h4 class="past-trips">Past</h4>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Tracker</title>
+  </head>
+  <body>
+    <div class="login-page" id="loginPage">
+      <section class="login-section" id="loginSection" role="form">
+        <h1 class="app-title">Travel Tracker</h1>
+        <h2 class="login-quote">Connecting You To The World Since 1990</h2>
+        <h3 class="login-message" id="loginMessge">
+          Please, Enter Your Login Information
+        </h3>
+        <div id="loginErrorMessage"></div>
+        <div class="login-inputs">
+          <label for="username" class="login-labels"
+            >Username:
+            <input
+              type="text"
+              placeholder="username"
+              id="username"
+              name="user-name"
+            />
+          </label>
+          <label for="password" class="login-labels">
+            Password:
+            <input
+              type="password"
+              placeholder="password"
+              id="password"
+              name="password"
+            />
+          </label>
+          <button class="submit small-btn" id="loginButton">Login</button>
+        </div>
+      </section>
+    </div>
+    <div class="main-page hidden" id="mainPage">
+      <section class="title-section" role="banner">
+        <h1 class="app-title">Travel Tracker</h1>
+        <h2 class="app-quote">Connecting You To The World Since 1990</h2>
+      </section>
+      <section class="welcome-section" role="banner">
+        <h2 aria-label="welcomes-user-by-name" class="welcome-user">
+          <span id="userName"></span>
+        </h2>
+      </section>
+      <section class="booking-section" role="form">
+        <h3 class="booking-title">Plan Your Next Trip Here!</h3>
+        <div class="booking">
+          <label for="start"
+            >Start Date:
+            <input
+              aria-label="pick-trip-start-date"
+              required
+              type="date"
+              id="tripStartDate"
+              name="trip-start-date"
+              min="1990-01-01"
+              max="20270-12-31"
+              required
+            />
+          </label>
+          <label for="trip-duration"
+            >Duration (days):
+            <input
+              aria-label="pick-trip-duration"
+              required
+              class="trip-duration"
+              id="tripDuration"
+              type="number"
+              min="1"
+              required
+            />
+          </label>
+          <label for="num-travelers"
+            >Number of Travelers:
+            <input
+              aria-label="pick-number-of-travelers"
+              required
+              class="number-of-travelers"
+              type="number"
+              id="numberOfTravelers"
+              min="1"
+              required
+            />
+          </label>
+          <label for="drop"
+            >Choose a Destination:
+            <select
+              aria-label="drop-down-of-travel-destinations"
+              class="drop"
+              id="dropDownLocations"
+              required
+            >
+              <option value="0">Destinations</option>
+            </select>
+          </label>
+        </div>
+        <h4
+          aria-label="displays-error-message-to-user"
+          class="display-message"
+          id="userMessage"
+        ></h4>
+        <button class="book-button" id="bookButton">Start Your Travel!</button>
+        <button class="estimate-button" id="estimateButton">
+          Get an Estimate!
+        </button>
+        <button class="logout-button" id="logoutButton">Logout</button>
+      </section>
+      <section class="trip-info-section" role="main">
+        <h3 class="user-trip-info">Your Trips</h3>
+        <h4 class="past-trips">Past</h4>
         <div id="pastTrips"></div>
-      <h4 class="upcoming-trips">Upcoming</h4>
+        <h4 class="upcoming-trips">Upcoming</h4>
         <div id="upcomingTrips"></div>
-      <h4 class="pending-trips">Pending</h4>
-      <div id="pendingTrips"></div>
-    </section>
-    <section class="account-info" role="contentinfo">
-      <h3 class="user-account-info">Your Account</h3>
-      <h4 class="total-spent">Total</h4>
-      <div id="totalSpent"></div>
-    </section>
-  </div>
-  <script src="bundle.js"></script>
-</body>
+        <h4 class="pending-trips">Pending</h4>
+        <div id="pendingTrips"></div>
+      </section>
+      <section class="account-info" role="contentinfo">
+        <h3 class="user-account-info">Your Account</h3>
+        <h4 class="total-spent">Total</h4>
+        <div id="totalSpent"></div>
+      </section>
+    </div>
+    <script src="bundle.js"></script>
+  </body>
 </html>

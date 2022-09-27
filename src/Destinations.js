@@ -1,7 +1,7 @@
 class Destinations {
   constructor(allDestinations) {
-    this.allDestinations = allDestinations
+    this.allDestinations = allDestinations;
   }
 }
 
-export default Destinations
+export default Destinations;

@@ -1,27 +1,36 @@
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
+  background-color: rgb(109, 161, 161);
   margin: 0;
   padding-left: 15px;
   padding-right: 15px;
 }
 
 .destination-image {
-    width: 25vw;
-    height:auto;
-    align-items: center;
-    flex-shrink: 3;
-    margin: 1.5em;
-    background-color: white;
-  
+  width: 25vw;
+  height: auto;
+  align-items: center;
+  flex-shrink: 3;
+  margin: 1.5em;
+  background-color: white;
 }
 
 .hidden {
   display: none;
 }
 
-h4 {
+.booking-title,
+.user-trip-info {
+  color: rgb(135, 151, 178);
+}
+
+.user-account-info,
+.past-trips,
+.pending-trips,
+.upcoming-trips,
+.total-spent {
   font-size: x-large;
-  color: green;
+  color: rgb(167, 165, 198);
 }
 
 .title-section {
@@ -29,8 +38,9 @@ h4 {
   justify-content: space-between;
 }
 
-.destination-name {
-  color: aquamarine;
+.destination-name,
+.p {
+  color: rgb(102, 206, 214);
 }
 
 #totalSpent {
