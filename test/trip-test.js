@@ -13,6 +13,14 @@ describe('Trip', () => {
   beforeEach(() => {
     sampleDestinations = new Destinations([
       {
+        id: 2,
+        destination: "Cusco, Peru",
+        estimatedLodgingCostPerDay: 80,
+        estimatedFlightCostPerPerson: 500,
+        image: "https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
+        alt: "overview of city buildings with a clear sky"
+        },
+      {
       id: 1,
       destination: "Lima, Peru",
       estimatedLodgingCostPerDay: 70,
@@ -50,7 +58,19 @@ describe('Trip', () => {
   });
 
   it('should calculate the trip cost', () => {
-    expect(sampleTrip.calculateTripCost(sampleDestinations)).to.equal()
+    sampleTrip.calculateTripCost(sampleDestinations.allDestinations)
+    expect(sampleTrip.tripTotal).to.equal(1056)
   })
 
+  it('should contain destination information', () => {
+    sampleTrip.getDestinationInfo(sampleDestinations.allDestinations)
+    expect(sampleTrip.destination).to.deep.equal({
+      id: 1,
+      destination: "Lima, Peru",
+      estimatedLodgingCostPerDay: 70,
+      estimatedFlightCostPerPerson: 400,
+      image: "https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
+      alt: "overview of city buildings with a clear sky"
+    })
+  })
 })

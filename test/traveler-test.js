@@ -258,19 +258,117 @@ describe('Traveler', () => {
       expect(traveler2.greetUser()).to.equal(`Welcome back Emeline! The World Awaits You!`)
     })
 
-    it.skip('should get the users past trips', () => {
-      expect(traveler1.getPastTrips(sampleTripsRepo, sampleDestinations)).to.equal()
+    it('should get the users past trips', () => {
+      traveler1.getPastTrips(sampleTripsRepo.trips, sampleDestinations.allDestinations)
+      expect(traveler1.pastTrips).to.deep.equal(
+        [
+         {
+          id: 1,
+          userID: 7,
+          destinationID: 1,
+          travelers: 1,
+          date: '2022/09/16',
+          duration: 8,
+          status: 'approved',
+          suggestedActivities: [],
+          destination: {
+            id: 1,
+            destination: 'Lima, Peru',
+            estimatedLodgingCostPerDay: 70,
+            estimatedFlightCostPerPerson: 400,
+            image: 'https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80',
+            alt: 'overview of city buildings with a clear sky'
+          }
+        },
+         {
+          id: 3,
+          userID: 7,
+          destinationID: 3,
+          travelers: 4,
+          date: '2022/05/22',
+          duration: 17,
+          status: 'approved',
+          suggestedActivities: [],
+          destination: {
+            id: 3,
+            destination: 'Sydney, Austrailia',
+            estimatedLodgingCostPerDay: 130,
+            estimatedFlightCostPerPerson: 950,
+            image: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+            alt: 'opera house and city buildings on the water with boats'
+          }
+        },
+         {
+          id: 5,
+          userID: 7,
+          destinationID: 5,
+          travelers: 3,
+          date: '2022/04/30',
+          duration: 18,
+          status: 'approved',
+          suggestedActivities: [],
+          destination: {
+            id: 5,
+            destination: 'Madrid, Spain',
+            estimatedLodgingCostPerDay: 150,
+            estimatedFlightCostPerPerson: 650,
+            image: 'https://images.unsplash.com/photo-1543785734-4b6e564642f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+            alt: 'city with clear skys and a road in the day time'
+          }
+        },
+         {
+          id: 7,
+          userID: 7,
+          destinationID: 7,
+          travelers: 5,
+          date: '2022/5/28',
+          duration: 20,
+          status: 'approved',
+          suggestedActivities: [],
+          destination: {
+            id: 7,
+            destination: 'Paris, France',
+            estimatedLodgingCostPerDay: 100,
+            estimatedFlightCostPerPerson: 395,
+            image: 'https://images.unsplash.com/photo-1524396309943-e03f5249f002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80',
+            alt: 'city during the day time with eiffel tower'
+          }
+        }
+      ])
     })
 
-    it.skip('should get the users upcoming trips', () => {
-      expect(traveler1.getUpcomingTrips(sampleTripsRepo, sampleDestinations)).to.equal()
+    it('should get the users upcoming trips', () => {
+      traveler1.getUpcomingTrips(sampleTripsRepo.trips, sampleDestinations.allDestinations)
+      console.log(traveler1.upcomingTrips)
+      expect(traveler1.upcomingTrips).to.deep.equal(
+        [
+         {
+          id: 9,
+          userID: 7,
+          destinationID: 9,
+          travelers: 5,
+          date: '2022/12/19',
+          duration: 19,
+          status: 'approved',
+          suggestedActivities: [],
+          destination: {
+            id: 9,
+            destination: 'Amsterdam, Netherlands',
+            estimatedLodgingCostPerDay: 100,
+            estimatedFlightCostPerPerson: 950,
+            image: 'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+            alt: 'canal with boats and trees and buildings along the side'
+          }
+        }
+      ])
     })
 
-    it.skip('should get the users pending trips', () => {
-      expect(traveler1.getPendingTrips(sampleTripsRepo, sampleDestinations)).to.equal()
+    it('should get the users pending trips', () => {
+      traveler1.getPendingTrips(sampleTripsRepo.trips, sampleDestinations.allDestinations)
+      expect(traveler1.pendingTrips).to.deep.equal([])
     })
 
-    it.skip('should get the users annual spending', () => {
-      expect(traveler1.getAnnualSpending(sampleTripsRepo, sampleDestinations)).to.equal(`You Have Spent $${annualSpending} On Travel So Far This Year!`)
+    it('should get the users annual spending', () => {
+      expect(traveler1.getAnnualSpending(sampleTripsRepo.trips, sampleDestinations.allDestinations)).to.equal(`You Have Spent $24469.5 On Travel So Far This Year!`)
     })
   })
