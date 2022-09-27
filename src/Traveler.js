@@ -1,7 +1,3 @@
-import Travelers from "./Travelers"
-import Trips from "./Trips"
-import Trip from "./Trip"
-
 class Traveler {
   constructor (traveler, date) {
     this.id = traveler.id
@@ -58,7 +54,6 @@ class Traveler {
     })
     return totalTrips
   }
-
 
   getAnnualSpending(trips, destinations) {
     let currentYear = new Date().getFullYear()

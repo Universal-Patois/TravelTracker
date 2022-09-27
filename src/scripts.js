@@ -1,11 +1,10 @@
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
 //// Imports ////
-// import "src/images/blue-map-with-borders-.png"
 import "./css/styles.css";
 import { fetchAllData, postTripApplication, fetchSingleTravelerData } from "./apiCalls";
 import {
-  displayPendingTrips, displayAllTrips, displayUserGreeting, populateDropDownLocations, displayAnnualSpending, toggleMainPage, displayLoginError
+   displayAllTrips, displayUserGreeting, populateDropDownLocations, displayAnnualSpending, toggleMainPage, displayLoginError
 } from "./domManipulation";
 
 import Traveler from "./Traveler";
@@ -23,7 +22,9 @@ const tripDuration = document.getElementById("tripDuration")
 const numberOfTravelers = document.getElementById("numberOfTravelers")
 const bookButton = document.getElementById("bookButton")
 const estimateButton = document.getElementById("estimateButton")
+const tripEstimate = document.getElementById("userMessage")
 const logoutButton = document.getElementById("logoutButton")
+const travelerPendingTrips = document.getElementById('pendingTrips')
 
 //// Global Variables ////
 let travelersRepo;
@@ -91,13 +92,28 @@ const sendTripApplication = () => {
     suggestedActivities: []
   };
   postTripApplication(tripInfo)
+  resetInputs()
 }
 
-// const calculateInputTripCost = (tripInfo) => {
+const resetInputs = () => {
+  tripStartDate.value = ''
+  tripDuration.value = ''
+  numberOfTravelers.value = ''
+  dropDownLocations.value = ''
+  travelerPendingTrips.innerHTML += ''
+}
 
-//   const lodgingCost = tripInfo.duration * tripInfo.destinationID
-//   const flightCost = tripInfo.travelers *
-// }
+const calculateInputTripCost = () => {
+  const selectedDestination = dropDownLocations.value
+  const numberOfPeople = numberOfTravelers.value
+  const tripLength =  tripDuration.value
+  const destinationFind = destinationsRepo.allDestinations.find(location => location.destination === selectedDestination)
+  const flightCost = numberOfPeople * destinationFind.estimatedFlightCostPerPerson
+  const lodgingCost = tripLength * destinationFind.estimatedLodgingCostPerDay
+  const tripTotal = lodgingCost + flightCost
+  const totalPlusFee = tripTotal + (tripTotal * .10)
+  return tripEstimate.innerHTML = `Your Trip Estimate is ${totalPlusFee}`
+}
 
 const logoutUser = () => {
   location.reload()
@@ -106,5 +122,5 @@ const logoutUser = () => {
 //// Event Listeners ////
 loginButton.addEventListener("click", loginUser)
 bookButton.addEventListener("click", sendTripApplication)
-// estimateButton.addEventListener("click", calculateInputTripCost)
+estimateButton.addEventListener("click", calculateInputTripCost)
 logoutButton.addEventListener("click", logoutUser)

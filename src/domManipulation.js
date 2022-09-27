@@ -1,7 +1,7 @@
 //// Query Selectors ////
 const loginPage = document.getElementById("loginPage")
 const mainPage = document.getElementById("mainPage")
-const logInErrorMessage = document.getElementById("logInErrorMessage")
+const loginErrorMessage = document.getElementById("loginErrorMessage")
 const userGreeting = document.getElementById('userName')
 const travelerPastTrips = document.getElementById('pastTrips')
 const travelerUpcomingTrips = document.getElementById('upcomingTrips')
@@ -29,14 +29,14 @@ const populateDropDownLocations = (locations) => {
 };
 
 const displayPastTrips = (traveler) => {
-  // travelerPastTrips.innerHTML = ''
+  travelerPastTrips.innerHTML = ''
   if (traveler.pastTrips.length > 0) {
     traveler.pastTrips.forEach(trip => {
       travelerPastTrips.innerHTML += `
       <div class="image-wrap">
       <img class="destination-image" src=${trip.destination.image} alt=${trip.destination.alt}><hr>
       </div>
-      <h4>${trip.destination.destination}</h4><hr>
+      <h4 class='destination-name'>${trip.destination.destination}</h4><hr>
       <p>Trip Date: ${trip.date} <br>
       Travelers: ${trip.travelers} <br>
       Duration: ${trip.duration} <br>
@@ -51,10 +51,11 @@ const displayPastTrips = (traveler) => {
 }
 
 const displayUpcomingTrips = (traveler) => {
+  travelerUpcomingTrips.innerHTML += ''
   if (traveler.upcomingTrips.length > 0) {
     traveler.upcomingTrips.forEach(trip => {
       travelerUpcomingTrips.innerHTML += `
-      <h4>${trip.destination.destination}</h4><hr>
+      <h4 class='destination-name'>${trip.destination.destination}</h4><hr>
       <div class="image-wrap">
       <img class="destination-image" src=${trip.destination.image} alt=${trip.destination.alt}><hr>
       </div>
@@ -73,13 +74,14 @@ const displayUpcomingTrips = (traveler) => {
 }
 
 const displayPendingTrips = (traveler) => {
+  travelerPendingTrips.innerHTML += ''
   if (traveler.pendingTrips.length > 0) {
     traveler.pendingTrips.forEach(trip => {
       travelerPendingTrips.innerHTML += `
       <div class="image-wrap">
       <img class="destination-image" src=${trip.destination.image} alt=${trip.destination.alt}><hr>
       </div>
-      <h4>${trip.destination.destination}</h4><hr>
+      <h4 class='destination-name'>${trip.destination.destination}</h4><hr>
       <p>Trip Date: ${trip.date} <br>
       Travelers: ${trip.travelers} <br>
       Duration: ${trip.duration} <br>
