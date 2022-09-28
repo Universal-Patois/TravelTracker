@@ -1,5 +1,3 @@
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-
 //// Imports ////
 import "./css/styles.css";
 import {
@@ -15,7 +13,7 @@ import {
   toggleMainPage,
   displayLoginError,
   displayPendingTrips,
-  displayUpcomingTrips
+  displayUpcomingTrips,
 } from "./domManipulation";
 
 import Traveler from "./Traveler";
@@ -36,7 +34,7 @@ const estimateButton = document.getElementById("estimateButton");
 const tripEstimate = document.getElementById("userMessage");
 const logoutButton = document.getElementById("logoutButton");
 const travelerPendingTrips = document.getElementById("pendingTrips");
-const travelerUpcomingTrips = document.getElementById('upcomingTrips')
+const travelerUpcomingTrips = document.getElementById("upcomingTrips");
 
 //// Global Variables ////
 let travelersRepo;
@@ -113,26 +111,26 @@ const sendTripApplication = () => {
     suggestedActivities: [],
   };
   postTripApplication(tripInfo).then((data) => {
-    let newTrip = new Trip(tripInfo)
-    newTrip.getDestinationInfo(destinationsRepo.allDestinations)
-    traveler.upcomingTrips.push(newTrip)
-    traveler.pendingTrips.push(newTrip)
-  resetInputs();
-});
+    let newTrip = new Trip(tripInfo);
+    newTrip.getDestinationInfo(destinationsRepo.allDestinations);
+    traveler.upcomingTrips.push(newTrip);
+    traveler.pendingTrips.push(newTrip);
+    resetInputs();
+  });
 };
 
 const clearPending = () => {
-  travelerPendingTrips.innerHTML = ''
-  travelerUpcomingTrips.innerHTML = ''
-  displayUpcomingTrips(traveler)
-  displayPendingTrips(traveler)
-}
+  travelerPendingTrips.innerHTML = "";
+  travelerUpcomingTrips.innerHTML = "";
+  displayUpcomingTrips(traveler);
+  displayPendingTrips(traveler);
+};
 const resetInputs = () => {
   tripStartDate.value = "";
   tripDuration.value = "";
   numberOfTravelers.value = "";
   dropDownLocations.value = "";
-  clearPending()
+  clearPending();
 };
 
 const calculateInputTripCost = () => {
@@ -142,14 +140,13 @@ const calculateInputTripCost = () => {
   const destinationFind = destinationsRepo.allDestinations.find(
     (location) => location.destination === selectedDestination
   );
-  const flightCost = numberOfPeople * destinationFind.estimatedFlightCostPerPerson;
+  const flightCost =
+    numberOfPeople * destinationFind.estimatedFlightCostPerPerson;
   const lodgingCost = tripLength * destinationFind.estimatedLodgingCostPerDay;
   const tripTotal = lodgingCost + flightCost;
   const totalPlusFee = tripTotal + tripTotal * 0.1;
-    return (tripEstimate.innerHTML = `Your Trip Estimate is ${totalPlusFee}`);
-  
+  return (tripEstimate.innerHTML = `Your Trip Estimate is ${totalPlusFee}`);
 };
-
 
 const logoutUser = () => {
   location.reload();
