@@ -5,8 +5,11 @@ Mod 2 Final Solo Project - Design an app that can a user's travel using a API. I
 ## How to Use
 When a user visits the site they will see a login page. After the user enters the right credentials(username and password) the user will be taken to their dashboard. On the dashboard the user will be able to see their past, upcoming, and pending trips. As well, their yearly spending on travel will be displayed.
 
-## How to Install
-1. `fork` [this](https://github.com/Jerry-Vrrr/travel-tracker) repository
+User Login: 
+![login](src/GIFs/LogIn.gif)
+
+
+
 2. `git clone` it down to your command line
 3. Navigate into the repository on your machine
 4. Run `npm install`
