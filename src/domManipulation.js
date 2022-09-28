@@ -110,6 +110,7 @@ const displayLoginError = () => {
 
 export {
   displayPendingTrips,
+  displayUpcomingTrips,
   displayAllTrips,
   displayUserGreeting,
   populateDropDownLocations,

@@ -1,5 +1,3 @@
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-
 //// Imports ////
 import "./css/styles.css";
 import {
@@ -15,6 +13,7 @@ import {
   toggleMainPage,
   displayLoginError,
   displayPendingTrips,
+  displayUpcomingTrips,
 } from "./domManipulation";
 
 import Traveler from "./Traveler";
@@ -35,6 +34,7 @@ const estimateButton = document.getElementById("estimateButton");
 const tripEstimate = document.getElementById("userMessage");
 const logoutButton = document.getElementById("logoutButton");
 const travelerPendingTrips = document.getElementById("pendingTrips");
+const travelerUpcomingTrips = document.getElementById("upcomingTrips");
 
 //// Global Variables ////
 let travelersRepo;
@@ -110,18 +110,27 @@ const sendTripApplication = () => {
     status: "pending",
     suggestedActivities: [],
   };
-  postTripApplication(tripInfo);
-  traveler.pendingTrips.push(new Trip(tripInfo))
-  traveler.getPendingTrips(tripsRepo.trips, destinationsRepo.allDestinations)
-  resetInputs();
+  postTripApplication(tripInfo).then((data) => {
+    let newTrip = new Trip(tripInfo);
+    newTrip.getDestinationInfo(destinationsRepo.allDestinations);
+    traveler.upcomingTrips.push(newTrip);
+    traveler.pendingTrips.push(newTrip);
+    resetInputs();
+  });
 };
 
+const clearPending = () => {
+  travelerPendingTrips.innerHTML = "";
+  travelerUpcomingTrips.innerHTML = "";
+  displayUpcomingTrips(traveler);
+  displayPendingTrips(traveler);
+};
 const resetInputs = () => {
   tripStartDate.value = "";
   tripDuration.value = "";
   numberOfTravelers.value = "";
   dropDownLocations.value = "";
-  travelerPendingTrips.innerHTML += "";
+  clearPending();
 };
 
 const calculateInputTripCost = () => {
