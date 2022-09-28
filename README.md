@@ -8,8 +8,18 @@ When a user visits the site they will see a login page. After the user enters th
 User Login: 
 ![login](src/GIFs/LogIn.gif)
 
+Shows How a User Can Get Trip Estimate:
+![TripEstimate](src/GIFs/TripEstimate.gif)
+
+Shows How a User Can Book Their Trip:
+![TripBooking](src/GIFs/TripBooking.gif)
+
+User Logout:
+![Logout](src/GIFs/Logout.gif)
 
 
+## How to Install
+1. `fork` [this](https://github.com/Universal-Patois/TravelTracker) repository
 2. `git clone` it down to your command line
 3. Navigate into the repository on your machine
 4. Run `npm install`
