@@ -31,7 +31,7 @@ const tripDuration = document.getElementById("tripDuration");
 const numberOfTravelers = document.getElementById("numberOfTravelers");
 const bookButton = document.getElementById("bookButton");
 const estimateButton = document.getElementById("estimateButton");
-const tripEstimate = document.getElementById("userMessage");
+const userMessage = document.getElementById("userMessage");
 const logoutButton = document.getElementById("logoutButton");
 const travelerPendingTrips = document.getElementById("pendingTrips");
 const travelerUpcomingTrips = document.getElementById("upcomingTrips");
@@ -115,6 +115,7 @@ const sendTripApplication = () => {
     newTrip.getDestinationInfo(destinationsRepo.allDestinations);
     traveler.upcomingTrips.push(newTrip);
     traveler.pendingTrips.push(newTrip);
+    userMessage.innerText = `Your Trip is Pending! Check Bellow to See Your Trip!`
     resetInputs();
   });
 };
